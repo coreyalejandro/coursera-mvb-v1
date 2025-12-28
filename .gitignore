@@ -1,7 +1,11 @@
 node_modules
 .env
+.env.local
 .next
 node_modules
 .playwright-mcp
 package-lock.json
 tsconfig.tsbuildinfo
+
+# OpenMemory - IDE/Assistant specific rules
+.cursor/rules/openmemory.mdc
