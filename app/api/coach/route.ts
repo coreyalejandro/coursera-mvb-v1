@@ -16,7 +16,7 @@ export async function POST(req: Request) {
   const { question, context } = parsed.data
 
   const apiKey = process.env.OPENAI_API_KEY
-  if (!apiKey) {
+  if (!apiKey || apiKey === 'your-api-key-here' || apiKey.trim() === '') {
     const idx = context.toLowerCase().indexOf(question.toLowerCase())
     const snippet = idx >= 0 ? context.slice(Math.max(0, idx - 200), idx + 200) : context.slice(0, 400)
     return NextResponse.json({

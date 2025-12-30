@@ -29,11 +29,12 @@ export default function CoachDrawer({ context }: { context: string }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ question: q, context: context.slice(0, 6000) })
       })
-      if (!res.ok) {
-        const errorData = await res.json().catch(() => ({ error: 'Request failed' }))
-        throw new Error(errorData.error || 'Failed to get answer')
-      }
       const data = await res.json()
+      if (!res.ok) {
+        // API returns error messages in the 'answer' field
+        setMessages(m => [...m, { role: 'coach', content: data.answer || data.error || 'Failed to get answer' }])
+        return
+      }
       setMessages(m => [...m, { role: 'coach', content: data.answer || 'No answer received' }])
     } catch (e: any) {
       setMessages(m => [...m, { role: 'coach', content: `Error: ${e?.message || 'Failed to connect to coach'}` }])
