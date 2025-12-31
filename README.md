@@ -1,4 +1,4 @@
-# Coursera-Style AI‑First Course Player — MVB (Vercel‑Ready)
+# Corey's Agentic Course Starter Template (Vercel‑Ready)
 
 Production‑grade, minimal viable build of an accessible, AI‑powered course player.
 
